@@ -133,8 +133,9 @@ class Problem(u.Canonical):
         obj, constr = self.objective.canonical_form
         canon_constr += constr
 
-        for constr in self.constraints:
-            canon_constr += constr.canonical_form[1]
+        canon_constr += [constr.canonical_form[1] for constr in self.constants]
+        # for constr in self.constraints:
+        #     canon_constr += constr.canonical_form[1]
 
         return (obj, canon_constr)
 
